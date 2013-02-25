@@ -118,10 +118,10 @@ int main (int argc, char *argv[]){
     while(stop == 0)
     {
 
-      MPI_Recv(&res,1,MPI_INT,MPI_ANY_SOURCE,MPI_ANY_TAG,MPI_COMM_WORLD,&status);
-      //MPI_Irecv(&res,1, MPI_INT, MPI_ANY_SOURCE,MPI_ANY_TAG, MPI_COMM_WORLD, &request);
+      //MPI_Recv(&res,1,MPI_INT,MPI_ANY_SOURCE,MPI_ANY_TAG,MPI_COMM_WORLD,&status);
+      MPI_Irecv(&res,1, MPI_INT, MPI_ANY_SOURCE,MPI_ANY_TAG, MPI_COMM_WORLD, &request);
       
-      //MPI_Test(&request, &flag, &status);
+      MPI_Test(&request, &flag, &status);
 
       somme += res;
       printf("reception de %d\n",status.MPI_SOURCE);
